@@ -19,7 +19,7 @@ import HeaderIcon from './HeaderIcon'
 import { useSession, signOut } from 'next-auth/client'
 
 const Header = () => {
-    const {session} = useSession()
+    const [session] = useSession()
 
     return (
         <div className='sticky top-0 z-50 bg-white flex item-center p-2 lg:px-5 shadow-md'>
@@ -44,7 +44,7 @@ const Header = () => {
             {/* Center */}
             <div className="flex justify-center flex-grow">
                 <div className="flex space-x-6 md:space-x-2">
-                    <HeaderIcon Icon={HomeIcon} />
+                    <HeaderIcon active Icon={HomeIcon} />
                     <HeaderIcon Icon={FlagIcon} />
                     <HeaderIcon Icon={PlayIcon} />
                     <HeaderIcon Icon={ShoppingCartIcon} />
@@ -64,7 +64,7 @@ const Header = () => {
                 layout="fixed"
                 />
 
-                <p className="whitespace-nowrap font-semibold pr-3">Razen Ohs</p>
+                <p className="whitespace-nowrap font-semibold pr-3">{session.user.name}</p>
                 <ViewGridIcon className="icon" />
                 <ChatIcon className="icon" />
                 <BellIcon className="icon" />
